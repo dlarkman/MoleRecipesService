@@ -1,12 +1,14 @@
 package com.example.database;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 	@Entity
 	public class Recipe implements Serializable {
@@ -25,6 +27,10 @@ import javax.persistence.Id;
 	 
 	    @Column(nullable = false)
 	    private String method;
+	    
+	    @Column
+	    @OneToMany
+	    private List<Ingredient> ingredients;
 
 		public long getId() {
 			return id;
@@ -50,7 +56,13 @@ import javax.persistence.Id;
 			this.method = method;
 		}
 	    
-	    
+		public List<Ingredient> getIngredients() {
+			return ingredients;
+		}
+
+		public void setIngredients(List<Ingredient> ingredients) {
+			this.ingredients = ingredients;
+		}
 	    
 	}
 
