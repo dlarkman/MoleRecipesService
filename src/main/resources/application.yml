@@ -60,6 +60,6 @@ spring:
     generate-ddl: true
 logging:
     level:
-        org.springframework: INFO
-        org.hibernate: INFO
-        com.zaxxer: INFO   
+        org.springframework: DEBUG
+        org.hibernate: DEBUG
+        com.zaxxer: DEBUG

@@ -1,26 +1,21 @@
 package com.example.database;
 
-import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 	@Entity
-	public class Recipe implements Serializable {
-	  
-	    /**
-		 * 
-		 */
-		private static final long serialVersionUID = 1L;
+	public class Recipe {
 
 		@Id
-	    @GeneratedValue(strategy = GenerationType.IDENTITY)
+		@GeneratedValue
 	    private long id;
 	 
 	    @Column(nullable = false, unique = true)
@@ -30,7 +25,10 @@ import javax.persistence.OneToMany;
 	    private String method;
 	    
 	    @Column
-	    @OneToMany(cascade = {CascadeType.ALL})
+	    @OneToMany(
+	    	cascade = CascadeType.ALL,
+	    	fetch = FetchType.EAGER
+	    )
 	    private List<Ingredient> ingredients;
 
 		public long getId() {
